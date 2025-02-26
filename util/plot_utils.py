@@ -19,7 +19,7 @@ def plot_optimal_profit(results):
     plt.grid(True)
     plt.show()
 
-    fig.savefig("../plots/optimal_profit_vs_truck_capacity.png", dpi=330)
+    fig.savefig("../../plots/optimal_profit_vs_truck_capacity.png", dpi=330)
 
 
 def plot_interative_optimal_profit(results):
@@ -29,7 +29,7 @@ def plot_interative_optimal_profit(results):
     :param results list with list of truck capacities and a list of optimal profits corresponding to each capacity.
     """
 
-    save_path="../plots/"
+    save_path="../../plots/"
 
     capacities_plot, objectives = zip(*results)  # Extract data
 
