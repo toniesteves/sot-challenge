@@ -25689,7 +25689,7 @@ Subject To
    + 4 y_Tricycle_Area7_273 + 4 y_Tricycle_Area7_274
    + 4 y_Tricycle_Area7_275 + 4 y_Tricycle_Area7_276
    + 4 y_Tricycle_Area7_277 + 4 y_Tricycle_Area7_278
-   + 4 y_Tricycle_Area7_279 <= 4000
+   + 4 y_Tricycle_Area7_279 <= 80
 Bounds
 Binaries
  y_Child_Area1_1 y_Child_Area1_2 y_Child_Area1_3 y_Child_Area1_4
