@@ -59,3 +59,13 @@ def plot_interative_optimal_profit(results):
         print(f"Unexpected error: {e}")
 
     fig.show()
+
+
+def plot_fitness_history(fitness_history):
+    plt.figure(figsize=(8, 5))
+    plt.plot(range(len(fitness_history)), fitness_history, marker='o', linestyle='-')
+    plt.title("Best Raw Fitness per Generation (Shifted for Selection)")
+    plt.xlabel("Generation")
+    plt.ylabel("Best Raw Fitness")
+    plt.grid(True)
+    plt.show()
