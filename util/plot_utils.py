@@ -12,7 +12,7 @@ def plot_optimal_profit(results):
 
     fig = plt.figure(figsize=(10, 6))
     capacities_plot, objectives = zip(*results)
-    plt.plot(capacities_plot, objectives, marker='o')
+    plt.plot(capacities_plot, objectives, marker='o', linestyle='-', color='#ffe600', markerfacecolor='#ffe600')
     plt.xlabel("Truck Capacity")
     plt.ylabel("Optimal Profit")
     plt.title("Optimal Profit vs. Truck Capacity")
@@ -33,10 +33,8 @@ def plot_interative_optimal_profit(results):
 
     capacities_plot, objectives = zip(*results)  # Extract data
 
-    # Create interactive plot
     fig = go.Figure()
 
-    # Add scatter plot
     fig.add_trace(go.Scatter(
         x=capacities_plot,
         y=objectives,
@@ -45,16 +43,13 @@ def plot_interative_optimal_profit(results):
         line=dict(width=2)
     ))
 
-    # Customize layout
     fig.update_layout(
         title="Optimal Profit vs. Truck Capacity",
         xaxis_title="Truck Capacity",
         yaxis_title="Optimal Profit",
-        template="plotly_white",
-        # grid=dict(visible=True)
+        template="plotly_white"
     )
 
-    # Save interactive HTML file
     try:
         fig.write_html(save_path)
         print(f"Plot saved successfully at {save_path}")
@@ -63,5 +58,4 @@ def plot_interative_optimal_profit(results):
     except Exception as e:
         print(f"Unexpected error: {e}")
 
-    # Show the plot
     fig.show()
