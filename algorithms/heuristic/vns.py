@@ -210,12 +210,8 @@ def VNS(max_iterations=5000, max_no_improve=1000, local_search_it = 20):
 best_sol, best_fit, fitness_history = VNS()
 
 
-solution_dict = {}
-idx = 0
+solution_dict = {key: best_sol[idx] for idx, key in enumerate(gene_order)}
 
-for key in gene_order:
-    solution_dict[key] = best_sol[idx]
-    idx += 1
 
 print("Best solution (allocations by (Category, Destination)):")
 for key, value in solution_dict.items():
