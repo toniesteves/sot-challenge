@@ -40,8 +40,8 @@ sot-challenge/
 
 ## ⚙️ **Technology Stack**  
 This project is implemented using:  
-- 🐍 **Python**  
-- 📊 **Gurobi Optimizer**  
+- 🐍 **Python 3.9.21**  
+- 📊 **Gurobi Optimizer 12.0.1**
 - 🛠 **Pandas & NumPy** (Data handling)  
 - 📈 **Plotly/Matplotlib** (Visualization)  
 
@@ -50,4 +50,5 @@ This project is implemented using:
 ## 🚀 **How to Run the Optimization Model**  
 1. **Install Dependencies**  
    ```bash
-   pip install gurobipy numpy pandas matplotlib plotly
+   pip install -r requirements.txt
+
