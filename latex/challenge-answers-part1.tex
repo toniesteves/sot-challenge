@@ -1,0 +1,195 @@
+\documentclass[]{article}
+\usepackage{amsmath, amssymb, float}
+
+\title{Rental Bike Share Problem}
+\author{Antonio G. L, Esteves}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+ 
+RentalBike is a bike sharing company specialized in short-term bicycle rentals along various areas of a city, offering different categories of bicycles. Clients may rent bicycles for any duration and may deliver the rented bicycles in a place different from where the rental started. However, the delivery place must be in one of the areas currently operated by RentalBike. Since clients are able to change the bicycles’ original position, RentalBike must often redistribute the surplus of bicycles according to the expected demand of each area. 
+The decision of how many bicycles will be redistributed from one area to another is based on expected profits for each possible volume of bicycles to be moved. Therefore, before starting the relocation of bicycles, it is necessary to optimize the volume of bicycles to be moved from one area to the others. 
+The following sections describe the problem to be solved. Read the input descriptions and assumptions before doing the tasks. 
+
+
+\section{Formulation Problem}
+
+This section presents the proposed formulation for the RentalBike optimization problem.
+
+\subsection{Definition}
+
+\begin{itemize}
+	\item $I$ → Set of bicycle categories.
+	\item $J$ → Set of destination areas.
+	\item $s_i$ → Number of surplus bicycles of category $i$ in the origin area.
+	\item $c_i$ → Space occupied by a bicycle of category $i$ in the truck.
+	\item $T$ → Total truck capacity.
+	\item $p_{ij,k}$ →Expected profit from relocating the $k$-th bicycle of category $i$ to area $j$.
+	\item $x_{i,j}$ → Decision variable representing the number of bicycles of category $i$ sent to area $j$, where $x_{i,j}$ is a non-negative integer.
+\end{itemize}
+
+\subsection{Objective Function}
+
+The objective function is given by the maximization of the total profit from the redistribution of bicycles:
+
+\begin{equation}
+\max \sum_{i \in I} \sum_{j \in J} \sum_{k=1}^{x_{i,j}} p_{ij,k}
+\end{equation}
+
+\subsection{Decision Vars}
+This section describes all decision variable. As quantidades de bicicletas enviadas para cada área devem ser inteiras e não negativas:
+
+\begin{equation}
+	x_{i,j} \in \mathbb{Z}^+, \quad \forall i \in I, \forall j \in J
+\end{equation}
+
+\subsection{Parameters}
+
+\begin{itemize}
+	\item $s_i$ → Quantity of bicycles of category 
+	$c$ available (surplus) in the origin area.
+	\item $c_i$ → Space occupied by a bicycle of category $i$ in the truck.
+	\item $p_{ij,k}$ →Expected profit from relocating the 
+	$k$-th bicycle of category $i$ to area $j$.
+	\item $x_{i,j}$ → Decision variable representing the number of bicycles of category $i$ sent to area $j$, wheree $x_{i,j}$ is a non-negative integer.
+\end{itemize}
+
+\section{Constraints}
+
+This section describes all the constraints of the model.
+
+\subsection{Truck Capacity}
+
+The total space occupied by the transported bicycles cannot exceed the truck's capacity:
+
+\begin{equation}
+\sum_{i \in I} \sum_{j \in J} c_i x_{i,j} \leq T
+\end{equation}
+
+\subsection{Constraint of available bicycles}
+
+The number of bicycles shipped from each category cannot exceed the available stock.
+
+\begin{equation}
+\sum_{i \in I} x_{ij} \leq s_i, \quad \forall i \in I
+\end{equation}
+
+\subsection{Mathematical Model}
+
+The problem involves the redistribution of bicycles of different categories from a specific area to others, aiming to maximize the expected profit from the reallocation while subject to the truck's capacity constraint. Thus, the complete model can be given by:
+
+	
+\begin{align}
+\max \sum_{i \in I} \sum_{j \in J} \sum_{k=1}^{x_{i,j}} p_{ij,k}
+\end{align}
+
+\begin{align}
+\sum_{i \in I} \sum_{j \in J} c_i x_{i,j} \leq T
+\end{align}
+
+\begin{align}
+\sum_{i \in I} x_{ij} \leq s_i, \quad \forall i \in I
+\end{align}
+
+\begin{align}
+		x_{i,j} \in \mathbb{Z}^+,  \quad \forall i \in I, \forall j \in J
+\end{align}
+	
+
+
+
+
+\subsection{Computational Aspects}
+
+In this study, the computational implementation was carried out using the Python programming language 3.9. The simulations were performed on an AMD Ryzen 7 series processor, 3.2 GHz, with 32 GB of RAM.
+
+\section{Results}
+
+The following section presents the results obtained from the proposed algorithms, providing a comprehensive analysis of its performance across different scenarios. The discussion of these findings aims to contextualize their significance within the broader literature, emphasizing both the strengths and potential limitations of the proposed methods.
+
+Table \ref{tab:resultados-exact} presents the results obtained by the exact algorithm. Considering the problem in its exact form and with the capacity constraint "relaxed," the algorithm achieved a value of 78,866.16 in its objective function. This value corresponds to a total optimized profit of USD 78.866.16.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{lccccccc}
+		\hline
+		\textbf{Category} & \textbf{Area 1} & \textbf{Area 2} & \textbf{Area 3} & \textbf{Area 4} & \textbf{Area 5} & \textbf{Area 6} & \textbf{Area 7} \\
+		\hline
+		Child    & 0.0  & 0.0  & 91.0  & 103.0 & 0.0  & 78.0  & 0.0  \\
+		Adult    & 6.0  & 0.0  & 92.0  & 97.0  & 0.0  & 75.0  & 0.0  \\
+		Electric & 0.0  & 0.0  & 110.0 & 72.0  & 0.0  & 97.0  & 0.0  \\
+		Racing   & 0.0  & 0.0  & 93.0  & 103.0 & 0.0  & 71.0  & 0.0  \\
+		Mountain & 0.0  & 0.0  & 104.0 & 108.0 & 0.0  & 70.0  & 0.0  \\
+		Tricycle & 0.0  & 0.0  & 106.0 & 109.0 & 0.0  & 64.0  & 0.0  \\
+		\hline
+	\end{tabular}
+	\caption{Bicycle Reallocation by Category and Area - Exact Algorithm}
+	\label{tab:resultados-exact}
+\end{table}
+
+Next, we present the allocation values achieved by the VNS heuristic. The result obtained by the algorithm reached an objective function value of approximately 74,132.8581. This value corresponds to a total optimized profit of USD 74.132.85. Table \ref{tab:resultados-vns} presents the allocation results by category and area.
+
+
+\begin{table}[H]
+	\centering
+	
+	\begin{tabular}{l|ccccccc}
+		\hline
+		\textbf{Category} & \textbf{Area 1} & \textbf{Area 2} & \textbf{Area 3} & \textbf{Area 4} & \textbf{Area 5} & \textbf{Area 6} & \textbf{Area 7} \\
+		\hline
+		Child      & 10    & 0     & 79    & 103   & 0     & 80    & 0     \\
+		Adult      & 43    & 0     & 55    & 97    & 0     & 75    & 0     \\
+		Electric   & 47    & 0     & 109   & 77    & 0     & 46    & 0     \\
+		Racing     & 85    & 0     & 45    & 105   & 0     & 32    & 0     \\
+		Mountain   & 44    & 0     & 94    & 100   & 0     & 44    & 0     \\
+		Tricycle   & 32    & 0     & 106   & 109   & 0     & 32    & 0     \\
+		\hline
+		
+	\end{tabular}
+	\caption{Bicycle Reallocation by Category and Area - VNS}
+	\label{tab:resultados-vns}
+\end{table}
+
+
+The results obtained by the tabu search heuristic are presented in Table \ref{tab:resultados-ts}. The result obtained by the algorithm reached an objective function value of approximately 78,063.9850. This value corresponds to a total optimized profit of USD 78.063.98. 
+
+
+\begin{table}[H]
+	\centering
+	
+	\begin{tabular}{l|ccccccc}
+		\hline
+		\textbf{Category} & \textbf{Area 1} & \textbf{Area 2} & \textbf{Area 3} & \textbf{Area 4} & \textbf{Area 5} & \textbf{Area 6} & \textbf{Area 7} \\
+		\hline
+			Child      & 0     & 0     & 91    & 103   & 0     & 78    & 0     \\
+			Adult      & 0     & 0     & 91    & 97    & 0     & 82    & 0     \\
+			Electric   & 14    & 0     & 91    & 77    & 0     & 97    & 0     \\
+			Racing     & 0     & 0     & 93    & 103   & 0     & 71    & 0     \\
+			Mountain   & 0     & 0     & 100   & 103   & 0     & 79    & 0     \\
+			Tricycle   & 10    & 0     & 106   & 95    & 0     & 68    & 0     \\
+		\hline
+	\end{tabular}
+	\caption{Bicycle Reallocation by Category and Area - Tabu Search}
+	\label{tab:resultados-ts}
+\end{table}
+
+\begin{table}[htbp]
+	\centering
+	\begin{tabular}{lccc}
+		\hline
+		\textbf{Algorithm} & \textbf{Exact Algorithm} & \textbf{Tabu Search} & \textbf{VNS} \\
+		\hline
+		\textbf{Obj. Value} & 78.866.16 & 78.063.9850 & 74.132.85 \\
+		\hline
+	\end{tabular}
+	\caption{Comparison of Objective Values Obtained}
+	\label{tab:transposed_results}
+\end{table}
+
+
+
+
+\end{document}
