@@ -1,4 +1,4 @@
-\ Model Bicycles_Relocation
+\ Model bicycles_relocation_opt
 \ LP format - for model browsing. Use MPS format to capture full model detail.
 Maximize
   45.4865 y_Child_Area1_1 + 20.9672 y_Child_Area1_2
@@ -16943,7 +16943,7 @@ Subject To
    <= 0
  seq_Tricycle_Area7_279: - y_Tricycle_Area7_278 + y_Tricycle_Area7_279
    <= 0
- excedente_Child: y_Child_Area1_1 + y_Child_Area1_2 + y_Child_Area1_3
+ surplus_Child: y_Child_Area1_1 + y_Child_Area1_2 + y_Child_Area1_3
    + y_Child_Area1_4 + y_Child_Area1_5 + y_Child_Area1_6 + y_Child_Area1_7
    + y_Child_Area1_8 + y_Child_Area1_9 + y_Child_Area1_10
    + y_Child_Area1_11 + y_Child_Area1_12 + y_Child_Area1_13
@@ -17574,7 +17574,7 @@ Subject To
    + y_Child_Area7_266 + y_Child_Area7_267 + y_Child_Area7_268
    + y_Child_Area7_269 + y_Child_Area7_270 + y_Child_Area7_271
    + y_Child_Area7_272 <= 272
- excedente_Adult: y_Adult_Area1_1 + y_Adult_Area1_2 + y_Adult_Area1_3
+ surplus_Adult: y_Adult_Area1_1 + y_Adult_Area1_2 + y_Adult_Area1_3
    + y_Adult_Area1_4 + y_Adult_Area1_5 + y_Adult_Area1_6 + y_Adult_Area1_7
    + y_Adult_Area1_8 + y_Adult_Area1_9 + y_Adult_Area1_10
    + y_Adult_Area1_11 + y_Adult_Area1_12 + y_Adult_Area1_13
@@ -18200,7 +18200,7 @@ Subject To
    + y_Adult_Area7_263 + y_Adult_Area7_264 + y_Adult_Area7_265
    + y_Adult_Area7_266 + y_Adult_Area7_267 + y_Adult_Area7_268
    + y_Adult_Area7_269 + y_Adult_Area7_270 <= 270
- excedente_Electric: y_Electric_Area1_1 + y_Electric_Area1_2
+ surplus_Electric: y_Electric_Area1_1 + y_Electric_Area1_2
    + y_Electric_Area1_3 + y_Electric_Area1_4 + y_Electric_Area1_5
    + y_Electric_Area1_6 + y_Electric_Area1_7 + y_Electric_Area1_8
    + y_Electric_Area1_9 + y_Electric_Area1_10 + y_Electric_Area1_11
@@ -18852,7 +18852,7 @@ Subject To
    + y_Electric_Area7_273 + y_Electric_Area7_274 + y_Electric_Area7_275
    + y_Electric_Area7_276 + y_Electric_Area7_277 + y_Electric_Area7_278
    + y_Electric_Area7_279 <= 279
- excedente_Racing: y_Racing_Area1_1 + y_Racing_Area1_2 + y_Racing_Area1_3
+ surplus_Racing: y_Racing_Area1_1 + y_Racing_Area1_2 + y_Racing_Area1_3
    + y_Racing_Area1_4 + y_Racing_Area1_5 + y_Racing_Area1_6
    + y_Racing_Area1_7 + y_Racing_Area1_8 + y_Racing_Area1_9
    + y_Racing_Area1_10 + y_Racing_Area1_11 + y_Racing_Area1_12
@@ -19475,7 +19475,7 @@ Subject To
    + y_Racing_Area7_259 + y_Racing_Area7_260 + y_Racing_Area7_261
    + y_Racing_Area7_262 + y_Racing_Area7_263 + y_Racing_Area7_264
    + y_Racing_Area7_265 + y_Racing_Area7_266 + y_Racing_Area7_267 <= 267
- excedente_Mountain: y_Mountain_Area1_1 + y_Mountain_Area1_2
+ surplus_Mountain: y_Mountain_Area1_1 + y_Mountain_Area1_2
    + y_Mountain_Area1_3 + y_Mountain_Area1_4 + y_Mountain_Area1_5
    + y_Mountain_Area1_6 + y_Mountain_Area1_7 + y_Mountain_Area1_8
    + y_Mountain_Area1_9 + y_Mountain_Area1_10 + y_Mountain_Area1_11
@@ -20134,7 +20134,7 @@ Subject To
    + y_Mountain_Area7_276 + y_Mountain_Area7_277 + y_Mountain_Area7_278
    + y_Mountain_Area7_279 + y_Mountain_Area7_280 + y_Mountain_Area7_281
    + y_Mountain_Area7_282 <= 282
- excedente_Tricycle: y_Tricycle_Area1_1 + y_Tricycle_Area1_2
+ surplus_Tricycle: y_Tricycle_Area1_1 + y_Tricycle_Area1_2
    + y_Tricycle_Area1_3 + y_Tricycle_Area1_4 + y_Tricycle_Area1_5
    + y_Tricycle_Area1_6 + y_Tricycle_Area1_7 + y_Tricycle_Area1_8
    + y_Tricycle_Area1_9 + y_Tricycle_Area1_10 + y_Tricycle_Area1_11
@@ -20786,7 +20786,7 @@ Subject To
    + y_Tricycle_Area7_273 + y_Tricycle_Area7_274 + y_Tricycle_Area7_275
    + y_Tricycle_Area7_276 + y_Tricycle_Area7_277 + y_Tricycle_Area7_278
    + y_Tricycle_Area7_279 <= 279
- capacidade: y_Child_Area1_1 + y_Child_Area1_2 + y_Child_Area1_3
+ capacity: y_Child_Area1_1 + y_Child_Area1_2 + y_Child_Area1_3
    + y_Child_Area1_4 + y_Child_Area1_5 + y_Child_Area1_6 + y_Child_Area1_7
    + y_Child_Area1_8 + y_Child_Area1_9 + y_Child_Area1_10
    + y_Child_Area1_11 + y_Child_Area1_12 + y_Child_Area1_13
