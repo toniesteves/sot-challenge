@@ -16,6 +16,24 @@ The objective is to **determine the optimal number of bicycles** to be moved bet
 The optimization model will help RentalBike make **cost-effective** and **data-driven** decisions for bicycle relocation.  
 
 ---
+## **Repository Structure**
+
+├── algorithms
+│   ├── exact
+│   └── heuristic
+├── data
+├── docs
+├── latex
+├── models
+├── notebooks
+│   ├── eda
+│   ├── exact
+│   └── heuristic
+├── output
+├── plots
+└── util
+
+---
 
 ## ⚙️ **Technology Stack**  
 This project is implemented using:  
