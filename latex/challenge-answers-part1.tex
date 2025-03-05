@@ -100,11 +100,86 @@ The problem involves the redistribution of bicycles of different categories from
 	
 
 
-
-
 \subsection{Computational Aspects}
 
-In this study, the computational implementation was carried out using the Python programming language 3.9. The simulations were performed on an AMD Ryzen 7 series processor, 3.2 GHz, with 32 GB of RAM.
+In this study, the computational implementation was carried out using the Python programming language 3.9 and Gurobi 12.0.1 as solver. The simulations were performed on an AMD Ryzen 7 series processor, 3.2 GHz, with 32 GB of RAM.
+
+\section{Methodology}
+
+This section describes the methods and techniques used to address the research problem and achieve the study's objectives.
+
+\subsection{Problem Description}
+
+In this study, we investigate the bibycles relocation problem. The objective is to determine how many bicycles of each category should be moved to each area so that the sum of expected profit is maximized.
+
+\subsection{Data Collection and Processing}
+The data used in this study was kindly provided by SOT (Shipping Optmization Team) of Mercado Livre. The data preprocessing included:
+
+\begin{itemize}
+	\item \textbf{Handling of Missing Values}: Imputation was performed by replacing missing values with zero.
+\end{itemize}
+
+\subsection{Mathematical Formulation}
+
+The problem was initially modeled as an optimization problem. Subsequently, heuristic approaches were used to solve the same problem. The formulation can be expressed as follows:
+
+\begin{align}
+	\max \sum_{i \in I} \sum_{j \in J} \sum_{k=1}^{x_{i,j}} p_{ij,k}
+\end{align}
+\qquad \qquad \qquad \qquad \qquad s.t
+\begin{align}
+	\sum_{i \in I} \sum_{j \in J} c_i x_{i,j} \leq T
+\end{align}
+
+\begin{align}
+	\sum_{i \in I} x_{ij} \leq s_i, \quad \forall i \in I
+\end{align}
+
+\begin{align}
+	x_{i,j} \in \mathbb{Z}^+,  \quad \forall i \in I, \forall j \in J
+\end{align}
+
+Onde:
+
+\begin{itemize}
+	\item $I$ → Set of bicycle categories.
+	\item $J$ → Set of destination areas.
+	\item $s_i$ → Number of surplus bicycles of category $i$ in the origin area.
+	\item $c_i$ → Space occupied by a bicycle of category $i$ in the truck.
+	\item $T$ → Total truck capacity.
+	\item $p_{ij,k}$ →Expected profit from relocating the $k$-th bicycle of category $i$ to area $j$.
+	\item $x_{i,j}$ → Decision variable representing the number of bicycles of category $i$ sent to area $j$, where $x_{i,j}$ is a non-negative integer.
+\end{itemize}
+
+\subsection{Algorithms and Methods Used}
+
+To solve the problem, a mathematical model was initially formulated in its exact form. Then, algorithmic approaches were implemented to validate and compare the obtained results. The main steps of the method are:
+
+\begin{enumerate}
+	\item \textbf{Implementation of the Exact Algorithm} – First, the exact algorithm is implemented considering the capacity constraint suggested in the challenge.
+	\item \textbf{Implementation of the Exact Algorithm without Capacity Constraint} – Aiming for a sensitivity analysis, the exact algorithm is re-implemented considering possible scenarios for the capacity constraint.
+	\item \textbf{Implementation of Approximate Algorithm 1} – The first heuristic algorithm is implemented. The objective is to compare it with the exact implementation and use it as a baseline for other heuristic algorithms.
+	\item \textbf{Implementation of the Following Approximate Algorithms} – Subsequently, two more approximate algorithms are implemented (totaling three algorithms) for comparison with the baseline and the exact algorithms.
+\end{enumerate}
+
+\subsection{Tools and Development Environment}
+The implementation and experimentation were conducted using:
+\begin{itemize}
+	\item \textbf{Programming Language}: Python 3.9.
+	\item \textbf{Libraries Used}: NumPy, Pandas, Gurobi 12.0.1.
+	\item \textbf{Computational Environment}: The algorithms were initially implemented in a Jupyter notebook, and later, scripts were created for each implemented algorithm.
+\end{itemize}
+
+\subsection{Performance Evaluation}
+To evaluate the results, we used the following metrics:
+\begin{itemize}
+	\item \textbf{Objective Function Value}: The value of the objective function directly reflects the amount of profit obtained in the optimization process.
+	\item \textbf{Allocation by Category}: Although a more subjective metric, the allocation by category reflects the coherence of resource allocation within the optimization process.
+\end{itemize}
+
+The quantitative results will be compared and presented in the following sections.
+
+
 
 \section{Results}
 
