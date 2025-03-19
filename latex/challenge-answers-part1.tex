@@ -40,10 +40,11 @@ The objective function is given by the maximization of the total profit from the
 \end{equation}
 
 \subsection{Decision Vars}
-This section describes all decision variable. As quantidades de bicicletas enviadas para cada área devem ser inteiras e não negativas:
+This section describes all decision variable. Decision vars are represented by binary variable that indicates whether the \( k \)-th bicycle of category \( i \) was sent to area \( j \) (1 if yes, 0 if no).
 
 \begin{equation}
-	x_{i,j} \in \mathbb{Z}^+, \quad \forall i \in I, \forall j \in J
+	%x_{i,j} \in \mathbb{Z}^+, \quad \forall i \in I, \forall j \in J
+	x_{i,j,k} \in \{0, 1\}, \quad \forall i \in I, \forall j \in J, \forall k.
 \end{equation}
 
 \subsection{Parameters}
