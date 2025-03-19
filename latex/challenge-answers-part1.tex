@@ -36,7 +36,7 @@ This section presents the proposed formulation for the RentalBike optimization p
 The objective function is given by the maximization of the total profit from the redistribution of bicycles:
 
 \begin{equation}
-\max \sum_{i \in I} \sum_{j \in J} \sum_{k=1}^{x_{i,j}} p_{ij,k}
+\max \sum_{i \in I} \sum_{j \in J} \sum_{k=1}^{x_{i,j}} x_{ij,k}p_{ij,k}
 \end{equation}
 
 \subsection{Decision Vars}
@@ -67,7 +67,7 @@ This section describes all the constraints of the model.
 The total space occupied by the transported bicycles cannot exceed the truck's capacity:
 
 \begin{equation}
-\sum_{i \in I} \sum_{j \in J} c_i x_{i,j} \leq T
+\sum_{i \in I} \sum_{j \in J} \sum_{k \in K} c_i x_{ij,k} \leq T
 \end{equation}
 
 \subsection{Constraint of available bicycles}
@@ -84,11 +84,11 @@ The problem involves the redistribution of bicycles of different categories from
 
 	
 \begin{align}
-\max \sum_{i \in I} \sum_{j \in J} \sum_{k=1}^{x_{i,j}} p_{ij,k}
+\max \sum_{i \in I} \sum_{j \in J} \sum_{k=1}^{x_{i,j}} x_{ij,k}p_{ij,k}
 \end{align}
 
 \begin{align}
-\sum_{i \in I} \sum_{j \in J} c_i x_{i,j} \leq T
+\sum_{i \in I} \sum_{j \in J} \sum_{k \in K} c_i x_{ij,k} \leq T
 \end{align}
 
 \begin{align}
@@ -137,7 +137,11 @@ The problem was initially modeled as an optimization problem. Subsequently, heur
 \end{align}
 
 \begin{align}
-	x_{i,j} \in \mathbb{Z}^+,  \quad \forall i \in I, \forall j \in J
+    & x_{ij,k} \leq x_{ij,k-1}, \quad \forall i \in I, \forall j \in J, \forall k > 1
+\end{align}
+
+\begin{align}
+	x_{i,j,k} \in \{0, 1\}, \quad \forall i \in I, \forall j \in J, \forall k.
 \end{align}
 
 Onde:
@@ -149,7 +153,7 @@ Onde:
 	\item $c_i$ → Space occupied by a bicycle of category $i$ in the truck.
 	\item $T$ → Total truck capacity.
 	\item $p_{ij,k}$ →Expected profit from relocating the $k$-th bicycle of category $i$ to area $j$.
-	\item $x_{i,j}$ → Decision variable representing the number of bicycles of category $i$ sent to area $j$, where $x_{i,j}$ is a non-negative integer.
+	\item $x_{ij,k}$ → Binary decision variable that indicates whether $k$-th bicycle of category $i$ was sent to area $j$,(1 if yes, 0 otherwise).
 \end{itemize}
 
 \subsection{Algorithms and Methods Used}
